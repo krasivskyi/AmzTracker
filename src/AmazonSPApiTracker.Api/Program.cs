@@ -19,7 +19,10 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
-app.UseHttpsRedirection();
+app.UseOpenApi();
+app.UseSwaggerUi();
+
+//app.UseHttpsRedirection();
 
 var summaries = new[]
 {
@@ -39,6 +42,8 @@ app.MapGet("/weatherforecast", () =>
     return forecast;
 })
 .WithName("GetWeatherForecast");
+
+app.MapControllers();
 
 app.Run();
 
